@@ -1,1 +1,24 @@
-<p>people works!</p>
+<h2>People</h2>
+
+<mat-divider [inset]="true"></mat-divider>
+<div>
+    <span>
+        <b>List of People</b>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>View:</b>&nbsp;Cards
+        <mat-slide-toggle color="primary" [(ngModel)]="isChecked"></mat-slide-toggle>
+
+
+        List
+    </span>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedViewOption">
+        <mat-radio-button *ngFor="let viewOption of viewOptions" [value]="viewOption.name">
+            {{viewOption.name}}
+            <mat-icon color="primary" aria-hidden="false" aria-label="Example home icon" fontIcon="viewOption.icon"></mat-icon>
+        </mat-radio-button>
+    </mat-radio-group>
+</div>
+<mat-divider [inset]="true"></mat-divider>
+<app-people-view-list *ngIf="selectedViewOption==='List'"></app-people-view-list>
+<app-people-view-grid *ngIf="selectedViewOption==='Grid'"></app-people-view-grid>
+<app-people-view-table *ngIf="selectedViewOption==='Table'"></app-people-view-table>

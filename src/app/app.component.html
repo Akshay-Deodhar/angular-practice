@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <img src=""> <!-- Add your logo if available-->
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <!-- This is your sidenav -->
+  <mat-sidenav style="width: 15%" #sidenav [opened]="false" [mode]="'side'">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/dashboard'" routerLinkActive="active-list-item">
+        Dashboard
+      </a>
+      <a mat-list-item [routerLink]="'/people'" routerLinkActive="active-list-item">
+        People
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!-- Content or body of your page-->
+  <mat-sidenav-content>
+    <div style="height: 90vh">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
